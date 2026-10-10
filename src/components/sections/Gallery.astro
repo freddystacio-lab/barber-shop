@@ -1,0 +1,17 @@
+---
+import { siteConfig } from "../../config/site";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+<section class="section gallery" id="galeria" aria-labelledby="gallery-title">
+  <div class="container">
+    <SectionHeading eyebrow="Nuestro trabajo" title="Precisión que se ve." />
+    <div class="gallery__grid">
+      {siteConfig.gallery.map((image, index) => (
+        <figure class={`gallery__item gallery__item--${index + 1}`}>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          <figcaption>{index === 0 ? "Corte" : index === 1 ? "Oficio" : "Espacio"}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

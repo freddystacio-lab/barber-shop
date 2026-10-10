@@ -1,0 +1,22 @@
+---
+import { siteConfig, getWhatsAppUrl } from "../../config/site";
+import Button from "../ui/Button.astro";
+---
+<section class="visit" id="visitanos" aria-labelledby="visit-title">
+  <div class="visit__visual">
+    <img src="/images/gallery-studio.webp" alt="Interior de Norte Barber Studio con estaciones de trabajo" loading="lazy" />
+    <p>Un espacio tranquilo en Viña del Mar</p>
+  </div>
+  <div class="visit__content">
+    <p class="eyebrow">Horarios y ubicación</p>
+    <h2 id="visit-title">Tu próxima hora,<br />a un mensaje.</h2>
+    <address>{siteConfig.business.address}<br />{siteConfig.business.city}, Chile</address>
+    <div class="schedule">
+      {siteConfig.schedule.map((row) => <div><span>{row.days}</span><strong>{row.hours}</strong></div>)}
+    </div>
+    <div class="visit__actions">
+      <Button href={getWhatsAppUrl()} external>Reservar por WhatsApp</Button>
+      <Button href={siteConfig.links.maps} variant="text" external>Cómo llegar</Button>
+    </div>
+  </div>
+</section>

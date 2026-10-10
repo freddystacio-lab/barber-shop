@@ -1,0 +1,15 @@
+---
+import { siteConfig } from "../../config/site";
+import Button from "../ui/Button.astro";
+---
+<section class="about" id="estudio" aria-labelledby="about-title">
+  <div class="about__statement">
+    <p class="eyebrow">El estudio</p>
+    <h2 id="about-title">Un buen corte no debería sentirse apurado.</h2>
+  </div>
+  <div class="about__copy">
+    <p>En Norte combinamos técnica clásica y mirada contemporánea. Trabajamos con tiempo, atención al detalle y una idea simple: que salgas sintiéndote tú, pero mejor.</p>
+    <p class="about__detail">Atención con reserva · Productos seleccionados · Ambiente sin prisa</p>
+    <Button href={siteConfig.links.instagram} variant="text" external>Conocer el estudio</Button>
+  </div>
+</section>

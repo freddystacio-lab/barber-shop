@@ -1,0 +1,33 @@
+---
+import { siteConfig, getWhatsAppUrl } from "../config/site";
+import Icon from "./ui/Icon.astro";
+---
+<header class="site-header" data-header>
+  <a class="wordmark" href="#inicio" aria-label={`${siteConfig.business.name}, inicio`}>
+    <span>N</span><strong>Norte</strong><small>Barber Studio</small>
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+    <span class="sr-only">Abrir menú</span><Icon name="menu" />
+  </button>
+  <nav id="site-nav" class="site-nav" aria-label="Navegación principal" data-nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Trabajos</a>
+    <a href="#estudio">El estudio</a>
+    <a href="#visitanos">Visítanos</a>
+    <a class="nav-book" href={getWhatsAppUrl()} target="_blank" rel="noreferrer">Reservar</a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLElement>("[data-nav-toggle]");
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    nav?.classList.toggle("is-open", !open);
+  });
+  nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+    toggle?.setAttribute("aria-expanded", "false");
+    nav.classList.remove("is-open");
+  }));
+</script>

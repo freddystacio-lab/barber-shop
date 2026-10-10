@@ -1,0 +1,24 @@
+---
+import { siteConfig } from "../config/site";
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-mark">Norte</p>
+      <p>Barber Studio</p>
+    </div>
+    <div>
+      <p class="footer-label">Contacto</p>
+      <a href={`tel:+${siteConfig.business.whatsappNumber}`}>{siteConfig.business.phoneDisplay}</a>
+      <a href={`mailto:${siteConfig.business.email}`}>{siteConfig.business.email}</a>
+    </div>
+    <div>
+      <p class="footer-label">Ubicación</p>
+      <p>{siteConfig.business.address}</p><p>{siteConfig.business.city}</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {new Date().getFullYear()} {siteConfig.business.name}</p>
+    {siteConfig.demo && <p class="demo-note">Proyecto demostrativo · Marca y datos ficticios</p>}
+  </div>
+</footer>

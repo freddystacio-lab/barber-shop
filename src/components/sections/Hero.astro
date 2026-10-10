@@ -1,0 +1,19 @@
+---
+import { siteConfig, getWhatsAppUrl } from "../../config/site";
+import Button from "../ui/Button.astro";
+---
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__image-wrap">
+    <img class="hero__image" src={siteConfig.hero.image.src} alt={siteConfig.hero.image.alt} fetchpriority="high" style={`object-position:${siteConfig.hero.image.position}`} />
+  </div>
+  <div class="hero__content">
+    <p class="eyebrow">{siteConfig.business.eyebrow}</p>
+    <h1 id="hero-title">Tu estilo,<br /><em>bien llevado.</em></h1>
+    <p class="hero__intro">{siteConfig.business.description}</p>
+    <div class="hero__actions">
+      <Button href={getWhatsAppUrl()} external>Reservar una hora</Button>
+      <Button href="#servicios" variant="text">Ver servicios</Button>
+    </div>
+    <p class="availability"><span></span>{siteConfig.hero.availability}</p>
+  </div>
+</section>

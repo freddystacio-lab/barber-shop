@@ -1,0 +1,20 @@
+---
+import { siteConfig, getWhatsAppUrl } from "../../config/site";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Icon from "../ui/Icon.astro";
+---
+<section class="section services" id="servicios" aria-labelledby="services-title">
+  <div class="container">
+    <SectionHeading eyebrow="Servicios y precios" title="Lo esencial, hecho con oficio." intro="Cada servicio comienza con una conversación y termina cuando todo queda en su lugar." />
+    <div class="services__list">
+      {siteConfig.services.map((service) => (
+        <article class:list={["service-row", { "service-row--featured": service.featured }] }>
+          <div class="service-row__body"><h3>{service.name}</h3><p>{service.description}</p></div>
+          <div class="service-row__meta"><strong>{service.price}</strong><span>{service.duration}</span></div>
+          <a href={getWhatsAppUrl(`Hola, quiero reservar ${service.name} en Norte Barber Studio.`)} target="_blank" rel="noreferrer" aria-label={`Reservar ${service.name}`}><Icon name="arrow" /></a>
+        </article>
+      ))}
+    </div>
+    <p class="services__note">Precios y servicios demostrativos · Consulta disponibilidad por WhatsApp</p>
+  </div>
+</section>

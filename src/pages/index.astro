@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MobileBookingBar from "../components/MobileBookingBar.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import Gallery from "../components/sections/Gallery.astro";
+import About from "../components/sections/About.astro";
+import Reviews from "../components/sections/Reviews.astro";
+import Visit from "../components/sections/Visit.astro";
+import Instagram from "../components/sections/Instagram.astro";
+import { siteConfig } from "../config/site";
+---
+<BaseLayout>
+  {siteConfig.demo && <div class="demo-banner">Demo comercial · Marca ficticia</div>}
+  <Header />
+  <main id="contenido">
+    <Hero />
+    <Services />
+    {siteConfig.sections.gallery && <Gallery />}
+    <About />
+    {siteConfig.sections.reviews && <Reviews />}
+    {siteConfig.sections.location && <Visit />}
+    {siteConfig.sections.instagram && <Instagram />}
+  </main>
+  <Footer />
+  <MobileBookingBar />
+</BaseLayout>

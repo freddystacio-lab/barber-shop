@@ -1,0 +1,17 @@
+---
+import { siteConfig } from "../../config/site";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+<section class="section reviews" aria-labelledby="reviews-title">
+  <div class="container">
+    <SectionHeading eyebrow="Una muestra de la experiencia" title="La confianza vuelve." />
+    <div class="reviews__grid">
+      {siteConfig.reviews.map((review) => (
+        <blockquote>
+          <p>“{review.quote}”</p>
+          <footer><strong>{review.author}</strong><span>{review.context}</span></footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>

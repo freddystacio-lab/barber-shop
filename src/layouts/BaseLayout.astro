@@ -1,0 +1,56 @@
+---
+import { siteConfig } from "../config/site";
+import "../styles/global.css";
+
+interface Props { title?: string; description?: string }
+const { title = siteConfig.seo.title, description = siteConfig.seo.description } = Astro.props;
+const canonical = new URL(siteConfig.seo.canonicalUrl);
+const shareImage = new URL(siteConfig.seo.shareImage, canonical);
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  name: siteConfig.business.name,
+  description,
+  url: canonical.href,
+  telephone: siteConfig.business.phoneDisplay,
+  image: shareImage.href,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.business.address,
+    addressLocality: siteConfig.business.city,
+    addressRegion: siteConfig.business.region,
+    addressCountry: "CL",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.business.coordinates.latitude,
+    longitude: siteConfig.business.coordinates.longitude,
+  },
+  priceRange: "$$",
+};
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content={siteConfig.brand.ink} />
+    <meta name="description" content={description} />
+    <meta name="robots" content={siteConfig.seo.indexable ? "index, follow" : "noindex, nofollow"} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    <style define:vars={{ accent: siteConfig.brand.accent, ink: siteConfig.brand.ink, paper: siteConfig.brand.paper }}></style>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>
