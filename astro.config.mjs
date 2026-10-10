@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://demo.nortebarber.cl",
+  site: "https://norte-barber-studio-demo.vercel.app",
   output: "static",
   build: { format: "directory" },
 });

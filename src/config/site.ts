@@ -89,7 +89,7 @@ export const siteConfig = {
   seo: {
     title: "Norte Barber Studio | Barbería en Viña del Mar",
     description: "Cortes, barba y cuidado masculino en Viña del Mar. Conoce los servicios y reserva por WhatsApp.",
-    canonicalUrl: "https://demo.nortebarber.cl/",
+    canonicalUrl: "https://norte-barber-studio-demo.vercel.app/",
     indexable: false,
     shareImage: "/images/norte-hero.webp",
   },
